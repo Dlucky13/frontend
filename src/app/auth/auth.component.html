@@ -1,0 +1,14 @@
+<mat-card class="box" [formGroup]="form" *ngIf="form">
+  <h1>{{ form.value | json }}</h1>
+  <mat-form-field appearance="fill">
+    <mat-label>Почта</mat-label>
+    <input matInput placeholder="Введите почту" formControlName="email" />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Пароль</mat-label>
+    <input matInput placeholder="Введите пароль" formControlName="password" />
+  </mat-form-field>
+  <mat-card-actions>
+    <button mat-button (click)="sendAuthData()">Войти</button>
+  </mat-card-actions>
+</mat-card>
