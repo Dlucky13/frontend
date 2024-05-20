@@ -6,6 +6,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { catchError, EMPTY, first, Observable } from 'rxjs';
 
 
 @Component({
@@ -19,7 +21,11 @@ export class AuthComponent implements OnInit {
 
   form!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private http: HttpClient,
+    private matSnackBar: MatSnackBar
+  ) { }
 
   ngOnInit() {
     this.createForm();
@@ -32,8 +38,33 @@ export class AuthComponent implements OnInit {
     })
   }
 
-  sendAuthData() {
-    this.http.post('http://localhost:3000/auth/login', this.form.value).subscribe();
+  login(): void {
+    const loginPath = 'http://localhost:3000/auth/login';
+    this.addErrorHandle(this.http.
+      post(loginPath, this.form.value))
+      .subscribe();
   }
+
+  registration(): void {
+    const registrationPath = 'http://localhost:3000/auth/signup';
+    this.addErrorHandle(this.http
+      .post(registrationPath, this.form.value))
+      .subscribe();
+  }
+
+  addErrorHandle(sequence: Observable<any>): Observable<any> {
+    return sequence.pipe(
+      first(),
+      catchError(_ => {
+        this.handleError();
+        return EMPTY
+      })
+    )
+  }
+
+  private handleError() {
+    this.matSnackBar.open('Что-то пошло не так', undefined, { duration: 2000 })
+  }
+
 
 }
