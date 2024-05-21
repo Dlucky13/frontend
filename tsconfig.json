@@ -18,10 +18,12 @@
     "target": "ES2022",
     "module": "ES2022",
     "useDefineForClassFields": false,
-    "lib": [
-      "ES2022",
-      "dom"
-    ]
+    "lib": ["ES2022", "dom"],
+    "paths": {
+      "@shared/components": ["./src/app/shared/components/index"],
+      "@shared/services": ["./src/app/shared/services/index"],
+      "@shared/models": ["./src/app/shared/models/index"]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
