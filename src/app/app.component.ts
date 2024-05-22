@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { AuthComponent } from '@shared/components';
+import { LayoutComponent } from './shared/components/layout/layout.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, AuthComponent],
+  imports: [RouterOutlet
+    // , AuthComponent, LayoutComponent
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

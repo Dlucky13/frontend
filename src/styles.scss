@@ -25,4 +25,8 @@ html {
     --mat-snack-bar-button-color: #d7e3ff;
     --mdc-snackbar-supporting-text-color: #d7e3ff;
   }
+
+  router-outlet {
+    display: none;
+  }
 }
