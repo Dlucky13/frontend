@@ -7,11 +7,15 @@ export const routes: Routes = [
   {
     path: '',
     canActivate: [canActivateGuard],
+    loadChildren: () => import('./zones/authorized/authorized.routes').then(routes => routes.AUTHORIZED_ROUTES)
     // children: [{
     //   path: 'public',
     //   loadChildren: () => import()
     // }]
   },
-  // { path: 'auth', component: AuthComponent },
-  // { path: '**', redirectTo: 'auth' }
+  {
+    path: 'notauthorized',
+    loadChildren: () => import('./zones/unauthorized/unauthorized.routes').then(routes => routes.UNAUTHORIZED_ROUTES)
+  }
+
 ];

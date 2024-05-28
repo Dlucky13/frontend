@@ -1,12 +1,14 @@
 import { inject, Injectable } from "@angular/core";
-import { ActivatedRouteSnapshot, CanActivateFn, RouterStateSnapshot } from "@angular/router";
+import { ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot, UrlTree } from "@angular/router";
 import { UserService } from "@shared/services";
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 class PermissionService {
-  constructor(private userService: UserService) { }
-  canActivate(): boolean {
-    return this.userService.isAuthenticated();
+  constructor(private userService: UserService, private router: Router) { }
+  canActivate(): boolean | UrlTree {
+    return this.userService.isAuthenticated()
+      ? true
+      : this.router.parseUrl('/notauthorized')
   }
 
   // canMatch(): boolean {
