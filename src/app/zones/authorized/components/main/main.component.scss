@@ -1,0 +1,25 @@
+.header {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  align-items: center;
+  background: #d7e3ff;
+}
+
+.drawer-container {
+  position: fixed;
+  top: 50px;
+  left: 0px;
+  bottom: 0px;
+}
+
+// :host ::ng-deep .mat-drawer-content {
+//   margin-left: 0 !important;
+// }
+
+.icon {
+  margin: 0 !important;
+}

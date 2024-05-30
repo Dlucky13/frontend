@@ -1,1 +1,27 @@
-<button (click)="logout()">Выйти из учетной записи</button>
+<div class="header">
+  <button mat-button (click)="logout()">Выйти из учетной записи</button>
+</div>
+
+<mat-drawer-container class="drawer-container" autosize>
+  <mat-drawer #drawer mode="side">
+    <div style="width: 100px">content</div>
+  </mat-drawer>
+
+  <div>
+    <button type="button" mat-button (click)="drawer.toggle()">
+      @if(drawer.opened){
+      <mat-icon
+        class="icon"
+        fontIcon="arrow_back_ios_new"
+        aria-hidden="false"
+      ></mat-icon>
+      } @else {
+      <mat-icon
+        class="icon"
+        fontIcon="arrow_forward_ios"
+        aria-hidden="false"
+      ></mat-icon>
+      }
+    </button>
+  </div>
+</mat-drawer-container>
