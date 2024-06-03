@@ -13,6 +13,7 @@ $m3-primary-theme: mat.define-theme(
 html {
   height: 100%;
   @include mat.all-component-themes($m3-primary-theme);
+  --mat-sidenav-container-width: 200px;
 
   .snack-success {
     --mdc-snackbar-container-color: #d7e3ff;

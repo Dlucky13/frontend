@@ -4,10 +4,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { AuthService } from '@shared/services';
+import { SideMenuComponent } from '../side-menu/side-menu.component';
 @Component({
   selector: 'app-authorized-main',
   standalone: true,
-  imports: [MatButtonModule, MatSidenavModule, FormsModule, MatIconModule],
+  imports: [MatButtonModule, MatSidenavModule, FormsModule, MatIconModule, SideMenuComponent],
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss'
 })

@@ -27,7 +27,9 @@
       "@authorized/components": ["./src/app/zones/authorized/components/index"],
       "@unauthorized/components": [
         "./src/app/zones/unauthorized/components/index.ts"
-      ]
+      ],
+      "@authorized/models": ["./src/app/zones/authorized/models/index"],
+      "@authorized/services": ["./src/app/zones/authorized/services/index"]
     }
   },
   "angularCompilerOptions": {

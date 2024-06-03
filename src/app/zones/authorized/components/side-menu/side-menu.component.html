@@ -1,0 +1,5 @@
+<mat-list role="list">
+  <mat-list-item *ngFor="let category of categories$ | async" role="listitem">{{
+    category.name
+  }}</mat-list-item>
+</mat-list>
