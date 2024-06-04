@@ -14,7 +14,7 @@ import { Observable, tap } from 'rxjs';
 })
 export class SideMenuComponent {
 
-  categories$: Observable<Category[]> = this.categoryService.getAll().pipe(tap(v => { debugger }))
+  categories$: Observable<Category[]> = this.categoryService.getAll()
 
   constructor(private categoryService: CategoryService) { }
 

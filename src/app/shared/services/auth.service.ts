@@ -1,17 +1,20 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { ErrorHandleService } from '@shared/services';
 import { CookieService } from 'ngx-cookie-service';
 import { tap } from 'rxjs';
+import { ApiService } from './api.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
+
+  private baseAuthPath = 'auth/'
+
   constructor(
-    private http: HttpClient,
     private errorHandleService: ErrorHandleService,
     private cookieService: CookieService,
-    private router: Router
+    private router: Router,
+    private apiService: ApiService
   ) { }
 
   isAuthenticated(): boolean {
@@ -19,10 +22,10 @@ export class AuthService {
   }
 
   login(formData: any): void {
-    const loginPath = 'http://localhost:3000/auth/login';
+    const loginPath = `${this.baseAuthPath}login`;
     this.errorHandleService
       .addErrorHandle(
-        this.http.post(loginPath, formData)
+        this.apiService.post(loginPath, formData)
           .pipe(
             tap((tokenObj: any) => {
               this.cookieService.set('token', tokenObj.accessToken);
@@ -34,8 +37,8 @@ export class AuthService {
   }
 
   signin(formData: any): void {
-    const registrationPath = 'http://localhost:3000/auth/signup';
-    this.errorHandleService.addErrorHandle(this.http.post(registrationPath, formData)).subscribe();
+    const registrationPath = `${this.baseAuthPath}signup`;
+    this.errorHandleService.addErrorHandle(this.apiService.post(registrationPath, formData)).subscribe();
   }
 
   logout(): void {
