@@ -19,17 +19,18 @@
     "module": "ES2022",
     "useDefineForClassFields": false,
     "lib": ["ES2022", "dom"],
+    "baseUrl": "./",
     "paths": {
-      "@shared/components": ["./src/app/shared/components/index"],
-      "@shared/services": ["./src/app/shared/services/index"],
-      "@shared/models": ["./src/app/shared/models/index"],
-      "@shared/permissions": ["./src/app/shared/permissions/index"],
-      "@authorized/components": ["./src/app/zones/authorized/components/index"],
+      "@shared/components": ["src/app/shared/components/index"],
+      "@shared/services": ["src/app/shared/services/index"],
+      "@shared/models": ["src/app/shared/models/index"],
+      "@shared/permissions": ["src/app/shared/permissions/index"],
+      "@authorized/components": ["src/app/zones/authorized/components/index"],
       "@unauthorized/components": [
-        "./src/app/zones/unauthorized/components/index.ts"
+        "src/app/zones/unauthorized/components/index"
       ],
-      "@authorized/models": ["./src/app/zones/authorized/models/index"],
-      "@authorized/services": ["./src/app/zones/authorized/services/index"]
+      "@authorized/models": ["src/app/zones/authorized/models/index"],
+      "@authorized/services": ["src/app/zones/authorized/services/index"]
     }
   },
   "angularCompilerOptions": {

@@ -2,3 +2,13 @@
   display: grid;
   height: 100vh;
 }
+
+.header {
+  display: grid;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  background: #d7e3ff;
+}
