@@ -28,7 +28,8 @@ export class AuthService {
         this.apiService.post(loginPath, formData)
           .pipe(
             tap((tokenObj: any) => {
-              this.cookieService.set('token', tokenObj.accessToken);
+              debugger
+              this.cookieService.set('auth-token', tokenObj.access_token);
               this.router.navigate(['/'])
             }
             )
@@ -42,12 +43,12 @@ export class AuthService {
   }
 
   logout(): void {
-    this.cookieService.delete('token');
+    this.cookieService.delete('auth-token');
     this.router.navigate(['/notauthorized']);
   }
 
   private getToken(): string {
-    return this.cookieService.get('token');
+    return this.cookieService.get('auth-token');
   }
 
 }

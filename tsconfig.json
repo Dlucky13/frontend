@@ -26,6 +26,9 @@
       "@shared/models": ["src/app/shared/models/index"],
       "@shared/permissions": ["src/app/shared/permissions/index"],
       "@authorized/components": ["src/app/zones/authorized/components/index"],
+      "@authorized/interceptors": [
+        "src/app/zones/authorized/interceptors/index"
+      ],
       "@unauthorized/components": [
         "src/app/zones/unauthorized/components/index"
       ],
