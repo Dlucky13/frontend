@@ -28,7 +28,6 @@ export class AuthService {
         this.apiService.post(loginPath, formData)
           .pipe(
             tap((tokenObj: any) => {
-              debugger
               this.cookieService.set('auth-token', tokenObj.access_token);
               this.router.navigate(['/'])
             }

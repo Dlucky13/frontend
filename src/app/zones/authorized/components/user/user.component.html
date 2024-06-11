@@ -1,3 +1,18 @@
-<button mat-button>Имя пользователя {{ name || "не указано" }}</button>
+<button
+  mat-button
+  cdkOverlayOrigin
+  #trigger="cdkOverlayOrigin"
+  (click)="showCardToggle()"
+>
+  Имя пользователя {{ (user$ | async)?.name || "не указано" }}
+</button>
 
-<!-- <button mat-button (click)="logout()">Выйти из учетной записи</button> -->
+<ng-template
+  cdkConnectedOverlay
+  cdkConnectedOverlayHasBackdrop
+  [cdkConnectedOverlayOrigin]="trigger"
+  [cdkConnectedOverlayOpen]="isCardShow"
+  (backdropClick)="showCardToggle()"
+>
+  <app-user-card></app-user-card>
+</ng-template>

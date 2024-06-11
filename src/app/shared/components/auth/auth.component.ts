@@ -19,6 +19,7 @@ import { AuthService, FormService } from '@shared/services';
 export class AuthComponent implements OnInit {
 
   form!: FormGroup;
+  authControls = ['email', 'password']
 
   constructor(
     private formService: FormService,
@@ -30,7 +31,7 @@ export class AuthComponent implements OnInit {
   }
 
   createForm() {
-    this.form = this.formService.createForm();
+    this.form = this.formService.createForm(this.authControls);
   }
 
   login(): void {

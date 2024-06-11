@@ -6,11 +6,16 @@ import { FormBuilder, FormGroup } from "@angular/forms";
 export class FormService {
   constructor(private formBuilder: FormBuilder) { }
 
-  createForm(): FormGroup {
-    return this.formBuilder.group({
-      email: [''],
-      password: ['']
-    })
+  createForm(controlNames: string[]): FormGroup {
+    const controls = this.createControls(controlNames)
+    return this.formBuilder.group(controls);
+  }
+
+  private createControls(controlNames: string[]): { [key: string]: string[] } {
+    return controlNames.reduce((acc: any, controlName) => {
+      acc[controlName] = [''];
+      return acc
+    }, {})
   }
 
 }

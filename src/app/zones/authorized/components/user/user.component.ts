@@ -1,25 +1,27 @@
+import { OverlayModule } from '@angular/cdk/overlay';
+import { AsyncPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { AuthService, UserService } from '@shared/services';
+import { UserService } from '@shared/services';
+import { UserCardComponent } from '../user-card/user-card.component';
 
 @Component({
   selector: 'app-user',
   standalone: true,
-  imports: [MatButtonModule],
+  imports: [MatButtonModule, UserCardComponent, OverlayModule, AsyncPipe],
   templateUrl: './user.component.html',
   styleUrl: './user.component.scss'
 })
 export class UserComponent {
 
   constructor(
-    private authService: AuthService,
     private userService: UserService
   ) { }
 
-  name = this.userService.user?.name;
+  user$ = this.userService.user$;
+  isCardShow: boolean = false;
 
-  logout() {
-    this.authService.logout();
+  showCardToggle() {
+    this.isCardShow = !this.isCardShow;
   }
-
 }
