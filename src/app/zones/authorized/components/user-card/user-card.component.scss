@@ -1,0 +1,45 @@
+.card {
+  display: grid;
+  // width: 400px;
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+  grid-gap: 15px;
+
+  grid-template:
+    ".                .        edit_button" 50px
+    "title            avatar   avatar" 50px
+    "subtitle         avatar   avatar" 50px
+    "additional_info  avatar   avatar" 50px
+    ".                .        exit_button" 50px
+    /1fr 100px 50px;
+}
+
+.card > * {
+  display: grid;
+}
+
+.title {
+  grid-area: title;
+}
+
+.subtitle {
+  grid-area: subtitle;
+}
+
+.additional_info {
+  grid-area: additional_info;
+}
+
+.avatar {
+  width: 100%;
+  grid-area: avatar;
+}
+
+.edit_button {
+  grid-area: edit_button;
+}
+
+.exit_button {
+  grid-area: exit_button;
+}
